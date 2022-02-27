@@ -22,7 +22,7 @@ function TravellerRow(props) {
       <td>{record.id}</td>
       <td>{record.name}</td>
       <td>{record.phone}</td>
-      <td>{record.timestamp.toDateString()}</td>
+      <td>{record.timestamp}</td>
     </tr>
   );
 }
@@ -180,7 +180,11 @@ class DisplayHomepage extends React.Component {
 
   createRecord(record) {
     record.id = this.state.records.length + 1;
-    record.timestamp = new Date();
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = date+' '+time;
+    record.timestamp = dateTime;
     const newRecordList = this.state.records.slice();
 
     let find = false;
